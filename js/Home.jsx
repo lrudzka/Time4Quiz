@@ -136,11 +136,13 @@ class Home extends React.Component {
                             <h3>HINTS</h3>
                             <div className='hint'> 1. The flag: </div>
                             <div id='flag' style={{backgroundImage: 'url('+this.state.selectedCountryData.flag+')'}}></div>
-                            {this.state.level > 1 && <div className='hint'> 2. Region: {this.state.selectedCountryData.region}</div>}
-                            {this.state.level > 2 && <div className='hint'> 3. Subregion: {this.state.selectedCountryData.subregion}</div>}
+                            {this.state.level > 1 && <div className='hint'> 2. Region: {this.state.selectedCountryData.subregion}</div>}
+                            {this.state.level > 2 && <div className='hint'> 3. Languages: {this.state.selectedCountryData.languages.map( (el, index) => <span key = {index}>{el.name}; </span> )  }</div>}
                             {this.state.level > 3 && <div className='hint'> 4. Capital: {this.state.selectedCountryData.capital}</div>}
-                            {this.state.level > 4 && <div className='hint'> 5. Borders: {this.state.selectedCountryData.borders.map( el => <span>{el}; </span>)}</div>}
-                            {this.state.level > 5 && <div className='hint'> 6. Mixed name: <section>{this.state.mixedName.map( el => <div className="mixed">{el}</div> )}</section></div>}
+                            {this.state.level > 4 && <div className='hint'> 5. Borders: {this.state.selectedCountryData.borders.map( (el, index) => <span key = {index} >{el}; </span>)}</div>}
+                            {this.state.level > 5 && <div className='hint mixedBox'> 6. Mixed name: <section className="row">{this.state.mixedName.map( (el, index) => <div key = {index} className="mixed">{el}</div> )}</section>
+                                                                                           <section className="row">{this.state.mixedName.map( (el, index) => <div key = {index} className="empty"></div> )}</section>
+                            </div>}
                             <button onClick = {this.handleNextHint} id='nextHint'>Next hint</button>
                         </section>}
                     </section>
